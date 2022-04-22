@@ -1,0 +1,102 @@
+<%- include('../_layouts/adminheader') %>
+<!-- Page Header -->
+<div class="container">
+  <h2 class="product-title mb-3">Add a product</h2>
+  <a href="/admin/products" class="btn btn-primary mb-3"
+    >Back to all products</a
+  >
+  <form
+    method="post"
+    action="/admin/products/add-product"
+    encType="multipart/form-data"
+  >
+    <div class="form-group">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input
+          name="title"
+          type="text"
+          class="form-control"
+          value="<%= title %>"
+          id="exampleFormControlInput1"
+          placeholder="Title"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea
+          id="ta"
+          name="desc"
+          type="text"
+          class="form-control"
+          value="<%= desc %>"
+          placeholder="Description"
+        >
+        <%= desc %>
+        </textarea>
+      </div>
+    </div>
+
+    <div class="form-group form-row">
+      <div class="mb-3">
+        <label class="form-label" for="inputState">Category</label>
+        <select name="category" class="form-control" id="inputState">
+          <% categories.forEach(cat => { %>
+          <option value=" <%= cat.slug %> "><%= cat.title %></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Price</label>
+        <input
+          name="price"
+          type="text"
+          class="form-control"
+          value="<%= price %>"
+          id="exampleFormControlInput1"
+          placeholder="Price"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="mb-4">
+        <label class="form-label" for="validatedCustomFile"
+          >Choose file...</label
+        >
+        <input
+          name="image"
+          type="file"
+          class="form-control"
+          id="img"
+          required
+        />
+        <img src="#" id="imgPreview" alt="" />
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary px-lg-4 py-2">Send</button>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#imgPreview").attr("src", e.target.result).width(300).height(200);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#img").change(function () {
+    readURL(this);
+  });
+</script>
+<%- include('../_layouts/adminfooter')%>

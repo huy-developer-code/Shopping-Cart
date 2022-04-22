@@ -1,0 +1,73 @@
+<%- include('../_layouts/adminheader') %>
+<div class="container">
+  <h2 class="product-title mb-5">Products</h2>
+  <a href="/admin/products/add-product" class="btn btn-primary"
+    >Add new Product</a
+  >
+  <br /><br />
+  <% if(count > 0 ){ %>
+  <table
+    id="collapse1"
+    class="table table-striped table-dark table-hover"
+    cellspacing="0"
+    width="100%"
+  >
+    <thead>
+      <tr>
+        <th scope="row">Product</th>
+        <th scope="row">Price</th>
+        <th scope="row">Category</th>
+        <th>Product Image</th>
+        <th scope="row">Edit</th>
+        <th scope="row">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach(function(product){ %>
+      <tr>
+        <td scope="col"><%= product.title %></td>
+        <td>$<%= parseFloat(product.price).toFixed(2) %></td>
+        <td><%= product.category %></td>
+        <td>
+          <% if(product.image == ""){ %>
+          <img src="images/noimage.png" class="img-thumbnail" />
+          <% }else {%>
+          <!-- <div class="">
+            <div class="w-25 h-25">
+              <img
+                src="/product_images/<%= product._id %>/<%= product.image %>"
+                class="img-thumbnail"
+              />
+            </div>
+          </div> -->
+          <img
+            src="/product_images/<%= product._id %>/<%= product.image %>"
+            width="150"
+            height="100"
+          />
+          <% } %>
+        </td>
+        <td>
+          <a href="/admin/products/edit-product/<%= product._id %>">Edit</a>
+        </td>
+        <td>
+          <a href="/admin/products/delete-product/<%= product._id %>">Delete</a>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% }else{ %>
+  <h3 class="text-center">There no products</h3>
+  <% } %>
+</div>
+<!-- <script>
+  $(document).ready(function () {
+    $("#dtVerticalScrollExample").DataTable({
+      scrollY: "200px",
+      scrollCollapse: true,
+    });
+    // $(".dataTables_length").addClass("bs-select");
+  });
+</script> -->
+<% include ../_layouts/adminfooter %>
