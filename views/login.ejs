@@ -1,8 +1,31 @@
 <% include _layouts/header %>
-<h1><%= title %></h1>
-<form method="post" action="/users/login">
+<!-- <h1><%= title %></h1> -->
+<body class="text-center">
+<main class="form-signin">
+  <form action="/users/login" method="post">
+    <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/img/favicons/apple-touch-icon.png" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <div class="form-floating">
+      <input name="username" type="text" class="form-control" placeholder="UserName">
+      <label>User Name</label>
+    </div>
+    <div class="form-floating">
+      <input name="password" type="password" class="form-control" placeholder="Password">
+      <label>Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2020–2021</p>
+  </form>
+</main>
+<!-- <form method="post" action="/users/login">
   <div class="form-group">
-    <label>Username</label>
+    <label class="form-label">Username</label>
     <input
       type="text"
       name="username"
@@ -11,7 +34,7 @@
     />
   </div>
   <div class="form-group">
-    <label>Password</label>
+    <label class="form-label">Password</label>
     <input
       type="password"
       name="password"
@@ -19,6 +42,6 @@
       placeholder="Password"
     />
   </div>
-  <button type="submit" class="btn btn-default">Login</button>
+  <button type="submit" class="btn btn-primary">Login</button> -->
 </form>
 <% include _layouts/footer %>

@@ -1,20 +1,29 @@
 <% include _layouts/header %>
-<div class="row products">
-  <% products.forEach(function(p) { %>
-  <div class="col-xs-12 col-md-4 p">
-    <a class="pa" href="/products/<%= p.category %>/<%= p.slug %>">
-      <img
-        class="pimage"
-        src="/product_images/<%= p.id %>/<%= p.image %>"
-        alt=""
-      />
-    </a>
-    <h3><%= p.title %></h3>
-    <h4>$<%= parseFloat(p.price).toFixed(2) %></h4>
-    <a class="vd" href="/products/<%= p.category %>/<%= p.slug %>">
-      View Details
-    </a>
+<main class="p">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 products">
+      <% products.forEach(function(p) { %>
+        <div class="col">
+          <div class="card" style="width: 18rem">
+            <a href="/products/<%= p.category %>/<%= p.slug %>"
+              ><img
+                src="/product_images/<%= p.id %>/<%= p.image %>"
+                class="card-img-top"
+                height="300"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h5 class="card-title overflow-hidden text-nowrap h-100"><%= p.desc %></h5>
+              <!-- <%= p.desc %> -->
+              <p class="card-text"><%= p.title %></p>
+              <a class="vd" href="/products/<%= p.category %>/<%= p.slug %>">
+                View Details
+              </a>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+    </div>
   </div>
-  <% }); %>
 </div>
 <% include _layouts/footer %>

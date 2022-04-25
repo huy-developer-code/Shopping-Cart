@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "dev":"nodemon ./bin/www"
+    "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.1.3",
+    "ckeditor4": "^4.18.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.4.1",
     "cookie-parser": "~1.4.4",
